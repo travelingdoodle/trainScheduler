@@ -1,75 +1,76 @@
 $(document).ready(function(){	
-// Initialize Firebase
+  // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyC2P3JURJEZcaG1PzDlOnYilV2KsQBHsvA",
-    authDomain: "timesheet-c070b.firebaseapp.com",
-    databaseURL: "https://timesheet-c070b.firebaseio.com",
-    projectId: "timesheet-c070b",
-    storageBucket: "",
-    messagingSenderId: "763391736641"
+    apiKey: "AIzaSyCPoccIhJxqSEB7Mnq2Y2EaTrvIgR6zCmE",
+    authDomain: "trainscheduler-487ad.firebaseapp.com",
+    databaseURL: "https://trainscheduler-487ad.firebaseio.com",
+    projectId: "trainscheduler-487ad",
+    storageBucket: "trainscheduler-487ad.appspot.com",
+    messagingSenderId: "437295954378"
   };
   firebase.initializeApp(config);
 
   database = firebase.database();
   
-  $('#submit-employee').on('click',function(){
+  $('#submit-train').on('click',function(){
   	event.preventDefault();
-  	name = $('#employee-name').val().trim();
-  	role = $('#employee-role').val().trim();
-  	startdate = $('#employee-startdate').val().trim();
-  	monthlyrate = $('#employee-monthlyrate').val().trim();
+  	name = $('#train-name').val().trim();
+  	destination = $('#train-destination').val().trim();
+  	freakquency = $('#train-Freakquency').val().trim();
+  	arrival = $('#train-arrival').val().trim();
 
   	database.ref().push({
   		name : name,
-  		role : role,
-  		startdate : startdate,
-  		monthlyrate : monthlyrate,
+  		destination : destination,
+		freakquency : freakquency,
+		arrival : arrival,
   		dateAdded: firebase.database.ServerValue.TIMESTAMP
-  	});
-
-  	$('#employee-name').val('');
-  	$('#employee-role').val('');
-  	$('#employee-startdate').val('');
-  	$('#employee-monthlyrate').val('');
+	  });
+	
+  	$('#train-name').val('');
+  	$('#train-destination').val('');
+  	$('#train-Freakquency').val('');
+  	$('#train-arrival').val('');
 
   });
 
 var d = new Date();
-var month = d.getMonth()+1;
-var day = d.getDate();
-var today = d.getFullYear() + '-' +  (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day 
-console.log(today)
+var timeStamp = d.getTime()+1;
+console.log(timeStamp);
+// var month = d.getMonth()+1;
+// var day = d.getDate();
+// var today = d.getFullYear() + '-' +  (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day 
+// console.log(today)
 
   database.ref().on("child_added",function(snapshot){
   	snapVal = snapshot.val();
-  	newRow = $('<div>').addClass('employee row');
-  	nameCol = $('<div class="col-xs-2">'+snapVal.name+'</div>');
-   	roleCol = $('<div class="col-xs-2">'+snapVal.role+'</div>');
-  	dateCol = $('<div class="col-xs-2">'+snapVal.startdate+'</div>');
+	newRow = $('<div>').addClass('train row');
+	nameCol = $('<div class="col-xs-2">'+snapVal.name+'</div>');
+  	destinationCol = $('<div class="col-xs-2">'+snapVal.destination+'</div>');
+   	freakquencyCol = $('<div class="col-xs-2">'+snapVal.freakquency+'</div>');
+  	arrivalCol = $('<div class="col-xs-2">'+snapVal.arrival+'</div>');
     
-    convertedDate = moment(snapVal.startdate, "MM/DD/YYYY");
+	convertedTime = moment(snapVal.arrival, "H:mm");
+	console.log(convertedTime);
 
-    monthsDuration = moment(convertedDate).diff(moment(), "months");
+	// Compare current time with the arrival time
+	minsToArrival = moment(convertedTime).diff(moment(), "minutes");
+	// minsToArrival = moment(convertedTime).diff(moment(), "minutes");
+	console.log(minsToArrival);
 
-    monthsDuration *= -1
-
-    monthsWorkedCol = $('<div class="col-xs-2">'+monthsDuration+'</div>');
-  	
-  	rateCol = $('<div class="col-xs-2">'+snapVal.monthlyrate+'</div>');
-  	
-  	var billed = parseInt(snapVal.monthlyrate * monthsDuration);
+	minzAwayCol = $('<div class="col-xs-2">'+minsToArrival+'</div>');
 	
-	billedCol = $('<div class="col-xs-2">'+billed+'</div>')
+	// billedCol = $('<div class="col-xs-2">'+billed+'</div>')
 
 	newRow.append(nameCol);
-	newRow.append(roleCol);
-	newRow.append(dateCol);
-	newRow.append(monthsWorkedCol);
-	newRow.append(rateCol);
-	newRow.append(billedCol);
+	newRow.append(destinationCol);
+	newRow.append(freakquencyCol);
+	newRow.append(arrivalCol);
+	newRow.append(minzAwayCol);
+	
 
 
-  	$('#employee-container').append(newRow);
+  	$('#train-container').append(newRow);
   });
  });
 

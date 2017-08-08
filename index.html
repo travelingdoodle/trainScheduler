@@ -3,26 +3,15 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Employee Timesheet</title>
+  <title>Trainz & Shit</title>
   <!-- Bootswatch Styling for Improving the Aesthetics -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css">
 
   <!-- Font Awesome CSS Icons (For cool glyphicons) -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  
+  <!-- Local Style Sheet -->
+  <link rel="stylesheet" href="style.css">
 
-  <!-- Style to fix the issue of text extending past panel length -->
-  <style>
-    .panel-body a {
-      word-break: break-all;
-    }
-    .employee-header{
-      font-weight: bold;
-    }
-    .header-row{
-      border-bottom:  3px solid #CCC;
-    }
-  </style>
 </head>
 
 <body>
@@ -32,7 +21,7 @@
 
     <!-- Jumbotron for Title -->
     <div class="jumbotron" style="background-color: #20315A; color: white;">
-      <h1 class="text-center"><strong>Time Sheet</strong></h1>
+      <h1 class="text-center"><img src="train.png" height="100" width="100"><strong> Trainz B Comin'</strong><img src="train.png" height="100" width="100"></h1>
     </div>
 
 
@@ -46,35 +35,35 @@
 
           <!-- Panel Heading for the retrieved articles box -->
           <div class="panel-heading">
-            <h3 class="panel-title"><strong><i class="fa fa-table"></i>Current Employees</strong></h3>
+            <h3 class="panel-title"><strong><i class="fa fa-table"></i>Sum Trainz</strong></h3>
           </div>
           <!-- This main panel will hold each of the resulting articles -->
           <div class="panel-body" id="well-section">
             <div class="row header-row">
-              <div class="col-xs-2 employee-header">Employee Name</div>
-              <div class="col-xs-2 employee-header">Role</div>
-              <div class="col-xs-2 employee-header">Start Date</div>
-              <div class="col-xs-2 employee-header">Months Worked</div>
-              <div class="col-xs-2 employee-header">Monthly Rate ($)</div>
-              <div class="col-xs-2 employee-header">Total Billed ($)</div>
+              <div class="col-xs-2 train-header">Trainz</div>
+              <div class="col-xs-2 train-header">Destinationz</div>
+              <div class="col-xs-2 train-header">Freakquency (Minz)</div>
+              <div class="col-xs-2 train-header">Comin' Atchu Next @</div>
+              <div class="col-xs-2 train-header">Menits Away</div>
+              <!-- <div class="col-xs-2 employee-header">Total Billed ($)</div> -->
             </div>
           </div>
           
-          <div class="panel-body" id="employee-container">
+          <div class="panel-body" id="train-container">
             
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Adding new employees -->
+    <!-- Adding new Trainz -->
     <div class="row">
       <div class="col-sm-12">
         <br>
-        <!-- Employee Entry Form -->
+        <!-- Train Entry Form -->
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong><i class="fa  fa-list-alt"></i> Add Employee</strong></h3>
+            <h3 class="panel-title"><strong><i class="fa  fa-list-alt"></i> Add A Trainz</strong></h3>
           </div>
           <div class="panel-body">
 
@@ -83,27 +72,27 @@
 
               <!-- Here we create the text box for capturing the search term-->
               <div class="form-group">
-                <label for="employee-name">Employee Name</label>
-                <input type="text" class="form-control" id="employee-name">
+                <label for="train-name">Train Name</label>
+                <input type="text" class="form-control" id="train-name">
               </div>
 
               <div class="form-group">
-                <label for="employee-role">Role</label>
-                <input type="text" class="form-control" id="employee-role">
+                <label for="train-destination">Destination</label>
+                <input type="text" class="form-control" id="train-destination">
               </div>
 
               <div class="form-group">
-                <label for="employee-startdate">Start Date (DD/MM/YY - ex: 01/01/89)</label>
-                <input type="date" class="form-control" id="employee-startdate">
+                <label for="train-Freakquency">Freakquency (Military Time HH:MM)</label>
+                <input type="text" class="form-control" id="train-Freakquency">
               </div>
               <div class="form-group">
-                <label for="employee-monthlyrate">Monthly Rate</label>
-                <input type="text" class="form-control" id="employee-monthlyrate">
+                <label for="train-arrival">Comin' Atchu Next @</label>
+                <input type="text" class="form-control" id="train-arrival">
               </div>
 
 
               <!-- Here we have our final submit button -->
-              <button type="submit" class="btn btn-primary" id="submit-employee">Submit</button>
+              <button type="submit" class="btn btn-primary" id="submit-train">Submit</button>
 
             </form>
           </div>
@@ -118,7 +107,7 @@
 
         <!-- Line Break followed by closing -->
         <hr>
-        <h5 class="text-center"><small>Made by Ahmed with lots and lots of <i class="fa fa-heart"></i></small></h5>
+        <h5 class="text-center"><small>Made by Floyd-0 with lots and lots of <i class="fa fa-heart"></i></small></h5>
 
       </div>
     </div>

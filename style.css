@@ -1,3 +1,14 @@
-.employee-header{
-	font-weight: bold;
+/* Style to fix the issues of text extending past panel length */
+.panel-body a {
+    word-break: break-all;
+}
+.train-header{
+  	font-weight: bold;
+}
+.header-row{
+    border-bottom:  3px solid #CCC;
+}
+
+img {
+	margin: 10px;
 }
