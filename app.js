@@ -36,8 +36,8 @@ $(document).ready(function(){
   database.ref().on("child_added",function(snapshot){
   	snapVal = snapshot.val();
 	newRow = $('<div>').addClass('train row');
-	nameCol = $('<div class="col-xs-2">'+snapVal.name+'</div>');
-  	destinationCol = $('<div class="col-xs-2">'+snapVal.destination+'</div>');
+	nameCol = $('<div class="col-xs-3">'+snapVal.name+'</div>');
+  	destinationCol = $('<div class="col-xs-3">'+snapVal.destination+'</div>');
    	freakquencyCol = $('<div class="col-xs-2">'+snapVal.freakquency+'</div>');
   	
 	
